@@ -1,6 +1,8 @@
 # GemmaGroq-RAG-Engine
 This repository contains the code for the GemmaGroq RAG Engine, which integrates Groq's AI capabilities with a custom RAG (Retrieval-Augmented Generation) system.
 
+Available at: https://gemmagroq-rag-engine.streamlit.app/
+
 ## Features
 - **GemmaGroq**: Utilizes Groq's AI models for natural language processing tasks.
 - **RAG Engine**: Implements a retrieval-augmented generation system to enhance the capabilities of the AI model.
