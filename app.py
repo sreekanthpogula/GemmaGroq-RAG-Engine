@@ -25,12 +25,14 @@ llm=ChatGroq(groq_api_key=groq_api_key,
 prompt = ChatPromptTemplate.from_messages([
     ("system", "You are a helpful assistant."),
     ("human", "Answer the question based on the context below."),
+    ("human", "Context: {context}"),
     ("human", "Question: {question}")
 ])
 
 def vector_embedding():
 
     if "vectors" not in st.session_state:
+        st.warning("Please click on 'Documents Embedding' button to create the vector store.")
         try:
             asyncio.get_running_loop()
         except RuntimeError:
@@ -62,7 +64,7 @@ if prompt1:
     retriever=st.session_state.vectors.as_retriever()
     retrieval_chain=create_retrieval_chain(retriever,document_chain)
     start=time.process_time()
-    response=retrieval_chain.invoke({'input':prompt1})
+    response = retrieval_chain.invoke({'question': prompt1})
     print("Response time :",time.process_time()-start)
     st.write(response['answer'])
 
