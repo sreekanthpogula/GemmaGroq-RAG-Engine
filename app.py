@@ -62,13 +62,12 @@ if st.button("Documents Embedding"):
 import time
 
 
-
 if prompt1:
     document_chain=create_stuff_documents_chain(llm,prompt)
     retriever=st.session_state.vectors.as_retriever()
     retrieval_chain=create_retrieval_chain(retriever,document_chain)
     start=time.process_time()
-    response = retrieval_chain.invoke({'question': prompt1})
+    response = retrieval_chain.invoke({'input': prompt1})
     print("Response time :",time.process_time()-start)
     st.write(response['answer'])
 
