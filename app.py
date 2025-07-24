@@ -24,7 +24,7 @@ llm=ChatGroq(groq_api_key=groq_api_key,
 
 prompt = ChatPromptTemplate.from_messages([
     ("system", "You are a helpful assistant."),
-    ("human", "Answer the question based on the context below.\n\n{context}"),
+    ("human", "Answer the question based on the context below."),
     ("human", "Question: {question}")
 ])
 
