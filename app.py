@@ -23,16 +23,20 @@ llm=ChatGroq(groq_api_key=groq_api_key,
              model_name="Llama3-8b-8192")
 
 prompt = ChatPromptTemplate.from_messages([
-    ("system", "You are a helpful assistant."),
-    ("human", "Answer the question based on the context below."),
-    ("human", "Context: {context}"),
-    ("human", "Question: {question}")
+"""
+Answer the questions based on the provided context only.
+Please provide the most accurate response based on the question
+<context>
+{context}
+<context>
+Questions:{input}
+
+"""
 ])
 
 def vector_embedding():
 
     if "vectors" not in st.session_state:
-        st.warning("Please click on 'Documents Embedding' button to create the vector store.")
         try:
             asyncio.get_running_loop()
         except RuntimeError:
